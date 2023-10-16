@@ -857,14 +857,6 @@ form > button:hover {
     transform: scale(1.3);
   }
 
-  .subscribe {
-    height: 50px;
-    width: 150px;
-    background-color: rgb(0, 119, 181);
-    text-align: center;
-    color: white;
-  }
-
   .btn {
     font-weight: bolder;
     font-size: 40px;
@@ -1051,14 +1043,6 @@ form > button:hover {
     margin: 10px;
   } */
 
-  .subscribe {
-    height: 50px;
-    width: 150px;
-    background-color: rgb(175, 177, 178);
-    text-align: center;
-    border-radius: 0%;
-    color: white;
-  }
 
   .spaceBtwFooterAndMain {
     height: 100px;

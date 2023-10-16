@@ -178,24 +178,16 @@ const App = () => {
     setCurrVal(currVal + 1);
   };
 
-  const [showSection, setShowSection] = useState(false);
+   useEffect(() => {
+     const interval = setInterval(() => {
+       setCurrVal((prevVal) => (prevVal + 1) % source.length);
+     }, 3000); 
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Adjust the scroll position where you want the section to appear
-      const scrollThreshold = 500;
+     return () => {
+       clearInterval(interval);
+     };
+   }, [source]);
 
-      if (window.scrollY > scrollThreshold) {
-        setShowSection(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   return (
     <div className="page">
