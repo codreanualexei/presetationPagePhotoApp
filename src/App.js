@@ -28,9 +28,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LeftArrow from "@mui/icons-material/KeyboardArrowLeft";
 import RightArrow from "@mui/icons-material/KeyboardArrowRight";
-// import { Carousel } from "react-responsive-carousel";
 import Carousel from "react-bootstrap/Carousel";
-// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
