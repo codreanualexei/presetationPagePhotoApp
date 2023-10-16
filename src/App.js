@@ -189,6 +189,24 @@ const App = () => {
    }, [source]);
 
 
+    const [isSection3Open, setIsSection3Open] = useState(false);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 100 && !isSection3Open) {
+          setIsSection3Open(true);
+        } else if (window.scrollY <= 100 && isSection3Open) {
+          setIsSection3Open(false);
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, [isSection3Open]);
+
   return (
     <div className="page">
       <header className="head">
