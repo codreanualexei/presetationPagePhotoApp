@@ -271,10 +271,10 @@ form > button:hover {
   border: none;
   outline: none;
   cursor: pointer;
-  background: #1877f2;
+  background: #292929;
   padding: 15px 0;
   border-radius: 6px;
-  color: #fff;
+  color: #ffffff;
   font-size: 1.25rem;
   font-weight: 600;
   transition: 0.2s ease;
@@ -321,8 +321,7 @@ form > button:hover {
 
 .number {
   height: 20px;
-  background-color: rgb(0, 119, 181);
-  color: white;
+  color: rgb(121, 117, 117);
   margin-top: -5px;
   font-weight: bolder;
   font-size: 15px;
@@ -429,7 +428,7 @@ form > button:hover {
 }
 
 .telegram {
-  color: rgb(49, 168, 224);
+  color: black;
 }
 
 .telegram:hover {
@@ -437,15 +436,15 @@ form > button:hover {
 }
 
 .linkedin {
-  color: rgb(0, 119, 181);
+  color: black;
 }
 
 .facebook {
-  color: rgb(72, 103, 170);
+  color: black;
 }
 
 .instagram {
-  color: #f60866;
+  color: black;
 }
 
 .icons {

@@ -247,7 +247,7 @@ const App = () => {
             </div>
 
             <div className="bottomContainer">
-              {currVal === 1 ? null : (
+              {/* {currVal === 1 ? null : (
                 <div className="left leftside" onClick={handleLeftButton}>
                   <div className="arrowAnim">
                     <div className="arrowSliding">
@@ -264,13 +264,13 @@ const App = () => {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
               <div className="rspace"></div>
               <div className="currNumber number">
                 {source[currVal]["category"]}
               </div>
               <div className="rspace"></div>
-              {currVal === source.length ? null : (
+              {/* {currVal === source.length ? null : (
                 <div className="left" onClick={handleRightButton}>
                   <div id="arrowAnim">
                     <div className="arrowSlidingR">
@@ -287,11 +287,11 @@ const App = () => {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
           <div className="emailSpace">
-            <span className="text">be up to date</span>
+            <span className="text">{t("subscribeMessage")}</span>
             <input className="inputEmail" value={email} placeholder={email} />
             <div className="btnlink">
               <button className="subscribe" type="button" onClick={handleOpen}>
