@@ -6,7 +6,7 @@ import usa from "./images/united-states.png";
 import frame from "./images/frame.png";
 import romania from "./images/romania.png";
 import apple from "./images/appleStore.png";
-import fotostali from "./images/fotostali.jpeg";
+import fotostali from "./images/fotostali.png";
 import google from "./images/GooglePlaystore.png";
 import person from "./images/presentations/PERSON.jpg";
 import botez from "./images/presentations/BOTEZ.jpg";

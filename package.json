@@ -23,7 +23,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "copy": "xcopy /S /I /Q /Y /F \"./build\" \"./anydeploy/frontend/build\\\" ",
+    "build": "react-scripts build && npm run copy",
+    "addremote": "cd anydeploy && heroku git:remote -a presentationphotoapp",
+    "git_add": "git -C ./anydeploy add .",
+    "git_commit": "git -C ./anydeploy commit -am \"done\"",
+    "remote_deploy": "git -C ./anydeploy push heroku master -f",
+    "startdeploy": "npm run git_add && npm run git_commit && npm run remote_deploy",
+    "deploy": "npm run build && npm run startdeploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
