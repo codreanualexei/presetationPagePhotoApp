@@ -36,7 +36,7 @@ import { useTranslation } from "react-i18next";
 
 const App = () => {
   const [open, setOpen] = useState(false);
-  let [currVal, setCurrVal] = useState(1);
+  let [currVal, setCurrVal] = useState(0);
   let [selectedLang, setSelectedLang] = useState("English");
   const [scrollY, setScrollY] = useState(0);
 
@@ -53,52 +53,48 @@ const App = () => {
   const [currentLanguage, setCurrentLanguage] = useState("en");
   const [email, setEmail] = useState("example@gmail.com");
   let source = [
-    // add new item in category
-    // import a image from images folder
-    // add at particular index of array source
-    {},
     {
-      id: 1,
+      id: 0,
       src: newoborn,
       category: "New born",
     },
     {
-      id: 2,
+      id: 1,
       src: botez,
       category: "Botez",
     },
     {
-      id: 3,
+      id: 2,
       src: fashion,
       category: "Fashion",
     },
     {
-      id: 4,
+      id: 3,
       src: food,
       category: "Food",
     },
     {
-      id: 5,
+      id: 4,
       src: portret,
       category: "Portret",
     },
     {
-      id: 6,
+      id: 5,
       src: produs,
       category: "Produs",
     },
     {
-      id: 7,
+      id: 6,
       src: wedding,
       category: "Wedding",
     },
     {
-      id: 8,
+      id: 7,
       src: studio,
       category: "Studio",
     },
     {
-      id: 9,
+      id: 8,
       src: person,
       category: "Person",
     },
@@ -178,34 +174,33 @@ const App = () => {
     setCurrVal(currVal + 1);
   };
 
-   useEffect(() => {
-     const interval = setInterval(() => {
-       setCurrVal((prevVal) => (prevVal + 1) % source.length);
-     }, 3000); 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrVal((prevVal) => (prevVal + 1) % source.length);
+    }, 3000);
 
-     return () => {
-       clearInterval(interval);
-     };
-   }, [source]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [source]);
 
+  const [isSection3Open, setIsSection3Open] = useState(false);
 
-    const [isSection3Open, setIsSection3Open] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100 && !isSection3Open) {
+        setIsSection3Open(true);
+      } else if (window.scrollY <= 100 && isSection3Open) {
+        setIsSection3Open(false);
+      }
+    };
 
-    useEffect(() => {
-      const handleScroll = () => {
-        if (window.scrollY > 100 && !isSection3Open) {
-          setIsSection3Open(true);
-        } else if (window.scrollY <= 100 && isSection3Open) {
-          setIsSection3Open(false);
-        }
-      };
+    window.addEventListener("scroll", handleScroll);
 
-      window.addEventListener("scroll", handleScroll);
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, [isSection3Open]);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isSection3Open]);
 
   return (
     <div className="page">
@@ -277,7 +272,7 @@ const App = () => {
                 {source[currVal]["category"]}
               </div>
               <div className="rspace"></div>
-              {currVal === 9 ? null : (
+              {currVal === source.length ? null : (
                 <div className="left" onClick={handleRightButton}>
                   <div id="arrowAnim">
                     <div className="arrowSlidingR">
