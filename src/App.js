@@ -38,6 +38,7 @@ const App = () => {
   const [open, setOpen] = useState(false);
   let [currVal, setCurrVal] = useState(1);
   let [selectedLang, setSelectedLang] = useState("English");
+  const [scrollY, setScrollY] = useState(0);
 
   const [inputText, setInputText] =
     useState(`We are launching an essential project for all those looking for a photographer.
@@ -177,102 +178,126 @@ const App = () => {
     setCurrVal(currVal + 1);
   };
 
+  const [showSection, setShowSection] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Adjust the scroll position where you want the section to appear
+      const scrollThreshold = 500;
+
+      if (window.scrollY > scrollThreshold) {
+        setShowSection(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="page">
       <header className="head">
-        <img className="floating" src={apple} onClick={handleClick}></img>
+        <img className="floating" src={apple} onClick={handleClick} alt="" />
         {/* <div className='hspace'></div> */}
         <img
           className="fotostali-img"
           src={fotostali}
           onClick={handleClick}
-        ></img>
+          alt=""
+        />
 
-        <img className="floating" src={google} onClick={handleClick}></img>
-      </header>
-      <div className="main">
-        <video src={backvideo} autoPlay muted loop></video>
+        <img className="floating" src={google} onClick={handleClick} alt="" />
+
         <div className="eng-rom-div">
           <select
             name="languages"
             className="headSelect"
             onChange={(e) => toggleLanguage(e)}
           >
-            <option value={"English"}>English</option>
-            <option value={"Romanian"}>Romanian</option>
+            <option value={"English"}>EN</option>
+            <option value={"Romanian"}>RO</option>
           </select>
         </div>
-        <div className="mid-main-container">
-          <div className="input container">
-            <div className="title">{t("welcome")}</div>
-            {/* {console.log(translation)} */}
-            <div className="inputArea">{t("aim")}</div>
+      </header>
+      <div className="main">
+        <section className="section1">
+          <div className="video-container">
+            <video src={backvideo} autoPlay muted loop></video>
           </div>
-        </div>
 
-        <div className="emailSpace">
-          BE UP TO DATE
-          <div>
-            <input value={email}></input>
-            <button className="subscribe" type="button" onClick={handleOpen}>
-              {t("subscribe")}
-            </button>
-          </div>
-        </div>
-
-        <div className="category">
-          {
-            <div className="container">
-              <img src={source[currVal]["src"]} className="innerImage"></img>
+          <div className="mid-main-container">
+            <div className="input container">
+              <div className="title">{t("welcome")}</div>
+              <div className="inputArea">{t("aim")}</div>
             </div>
-          }
-
-          <div className="bottomContainer">
-            {currVal == 1 ? null : (
-              <div className="left leftside" onClick={handleLeftButton}>
-                <div className="arrowAnim">
-                  <div class="arrowSliding">
-                    <div class="arrow"></div>
-                  </div>
-                  <div class="arrowSliding delay1">
-                    <div class="arrow"></div>
-                  </div>
-                  <div class="arrowSliding delay2">
-                    <div class="arrow"></div>
-                  </div>
-                  <div class="arrowSliding delay3">
-                    <div class="arrow"></div>
-                  </div>
-                </div>
-              </div>
-            )}
-            <div className="rspace"></div>
-            <div className="currNumber number">
-              {source[currVal]["category"]}
-            </div>
-            <div className="rspace"></div>
-            {currVal == 9 ? null : (
-              <div className="left" onClick={handleRightButton}>
-                {/* <RightArrow onClick={handleClick}></RightArrow> */}
-                <div id="arrowAnim">
-                  <div class="arrowSlidingR">
-                    <div class="arrowr"></div>
-                  </div>
-                  <div class="arrowSlidingR delay1">
-                    <div class="arrowr"></div>
-                  </div>
-                  <div class="arrowSlidingR delay2">
-                    <div class="arrowr"></div>
-                  </div>
-                  <div class="arrowSlidingR delay3">
-                    <div class="arrowr"></div>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
-        </div>
+        </section>
       </div>
+      <section className="section3">
+        <div className="categories">
+          <div className="containerBox">
+            <div className="imageBox">
+              <img src={source[currVal]["src"]} className="innerImage" alt="" />
+            </div>
+
+            <div className="bottomContainer">
+              {currVal === 1 ? null : (
+                <div className="left leftside" onClick={handleLeftButton}>
+                  <div className="arrowAnim">
+                    <div className="arrowSliding">
+                      <div className="arrow"></div>
+                    </div>
+                    <div className="arrowSliding delay1">
+                      <div className="arrow"></div>
+                    </div>
+                    <div className="arrowSliding delay2">
+                      <div className="arrow"></div>
+                    </div>
+                    <div className="arrowSliding delay3">
+                      <div className="arrow"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div className="rspace"></div>
+              <div className="currNumber number">
+                {source[currVal]["category"]}
+              </div>
+              <div className="rspace"></div>
+              {currVal === 9 ? null : (
+                <div className="left" onClick={handleRightButton}>
+                  <div id="arrowAnim">
+                    <div className="arrowSlidingR">
+                      <div className="arrowr"></div>
+                    </div>
+                    <div className="arrowSlidingR delay1">
+                      <div className="arrowr"></div>
+                    </div>
+                    <div className="arrowSlidingR delay2">
+                      <div className="arrowr"></div>
+                    </div>
+                    <div className="arrowSlidingR delay3">
+                      <div className="arrowr"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="emailSpace">
+            <span className="text">be up to date</span>
+            <input className="inputEmail" value={email} placeholder={email} />
+            <div className="btnlink">
+              <button className="subscribe" type="button" onClick={handleOpen}>
+                {t("subscribe")}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <div className="spaceBtwFooterAndMain"></div>
 
